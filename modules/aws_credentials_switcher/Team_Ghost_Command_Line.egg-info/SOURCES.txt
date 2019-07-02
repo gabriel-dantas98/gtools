@@ -1,0 +1,8 @@
+setup.py
+tg.py
+Team_Ghost_Command_Line.egg-info/PKG-INFO
+Team_Ghost_Command_Line.egg-info/SOURCES.txt
+Team_Ghost_Command_Line.egg-info/dependency_links.txt
+Team_Ghost_Command_Line.egg-info/entry_points.txt
+Team_Ghost_Command_Line.egg-info/requires.txt
+Team_Ghost_Command_Line.egg-info/top_level.txt

@@ -1,0 +1,32 @@
+connections:
+  openvpn:
+    command: sudo /usr/sbin/openvpn --remote 9.9.9.9 1194 udp --comp-lzo yes --nobind --dev tun --cipher AES-128-CBC --auth-nocache --persist-key --persist-tun --client --auth-user-pass --ca .crt --user
+
+clients:
+  1: 
+    link_download: https://hadler.me/files/forticlient-sslvpn_4.4.2333-1_amd64.deb
+    type: forticlient
+    server: sslvpn.fcl.com.br
+    port: 443
+    user: gdantas
+    password: gabriel18
+  2:
+    type: openvpn
+    file: 
+    user: 
+    password: 
+  3:
+    type: openvpn
+    path: .crt
+    gateway:   
+    user: 
+    password: 
+
+  # konduto:
+     
+  # koin:
+  #   -
+
+#Ideia é ter um esquema facil de conseguir acessar o zabbix de cada vpn
+#sudo /usr/sbin/openvpn --remote 9.9.9.9.9 1194 udp --comp-lzo yes --nobind --dev tun --cipher AES-128-CBC --auth-nocache --persist-key --persist-tun --client --auth-user-pass --ca ~path/ca.crt --user 
+
