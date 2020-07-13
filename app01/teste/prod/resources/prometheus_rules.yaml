@@ -1,0 +1,31 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: argocd
+  namespace: monitoring
+  labels:
+    app: checklist-chip-function-serverless-prod
+    path: applications/checklist-chip-function-serverless/environments/prod
+spec:
+  groups:
+  - name: alerts
+    rules:
+    - alert: ArgoCDApplicationIsDegraded
+      labels:
+        severity: warning
+        alarm_channel: operability
+      annotations:
+        message: Application '{{ $labels.name }}' has status '{{ $labels.health_status }}'.
+        runbook: https://github.com/quintoandar/runbooks/tree/master/alerts/infrastructure/README.md/#ArgoCDApplicationIsDegraded
+      expr: ' sum by (name, health_status) (argocd_app_info{name="checklist-chip-function-serverless-prod",
+        health_status="Degraded", endpoint="metrics", job="argocd-metrics"}) == 1 '
+      for: 1m
+    - alert: ArgoCDApplicationIsProgressing
+      labels:
+        severity: warning
+        alarm_channel: operability
+      annotations:
+        message: Application '{{ $labels.name }}' has status '{{ $labels.health_status }}'.
+        runbook: https://github.com/quintoandar/runbooks/tree/master/alerts/infrastructure/README.md/#ArgoCDApplicationIsProgressing
+      expr: ' sum by (name, health_status) (argocd_app_info{name="checklist-chip-function-serverless-prod", health_status="Progressing", endpoint="metrics", job="argocd-metrics"}) == 1 '
+      for: 0m
