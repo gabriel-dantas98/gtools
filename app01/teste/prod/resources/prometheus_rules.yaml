@@ -13,7 +13,7 @@ spec:
     - alert: ArgoCDApplicationIsDegraded
       labels:
         severity: warning
-        alarm_channel: mlkdoido
+        alarm_channel: mlkdoido2
       annotations:
         message: Application '{{ $labels.name }}' has status '{{ $labels.health_status }}'.
         runbook: https://github.com/quintoandar/runbooks/tree/master/alerts/infrastructure/README.md/#ArgoCDApplicationIsDegraded
