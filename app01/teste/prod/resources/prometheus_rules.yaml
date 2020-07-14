@@ -13,10 +13,10 @@ spec:
     - alert: ArgoCDApplicationIsDegraded
       labels:
         severity: warning
-        alarm_channel: mlkdoido2
+        alarm_channel: é nois tmj
       annotations:
         message: Application '{{ $labels.name }}' has status '{{ $labels.health_status }}'.
-        runbook: https://github.com/quintoandar/runbooks/tree/master/alerts/infrastructure/README.md/#ArgoCDApplicationIsDegraded
+        runbook: https://github.com/asdsadada/runbooks/tree/master/alerts/infrastructure/README.md/#ASODKASODKK
       expr: ' sum by (name, health_status) (argocd_app_info{name="checklist-chip-function-serverless-prod",
         health_status="Degraded", endpoint="metrics", job="argocd-metrics"}) == 1 '
       for: 1m
@@ -26,6 +26,6 @@ spec:
         alarm_channel: operability
       annotations:
         message: Application '{{ $labels.name }}' has status '{{ $labels.health_status }}'.
-        runbook: https://github.com/quintoandar/runbooks/tree/master/alerts/infrastructure/README.md/#ArgoCDApplicationIsProgressing
+        runbook: https://github.com/adadadadad/runbooks/tree/master/alerts/infrastructure/README.md/#ArgoCDApplicationIsProgressing
       expr: ' sum by (name, health_status) (argocd_app_info{name="checklist-chip-function-serverless-prod", health_status="Progressing", endpoint="metrics", job="argocd-metrics"}) == 1 '
       for: 0m
